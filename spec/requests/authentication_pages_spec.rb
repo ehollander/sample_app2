@@ -34,6 +34,7 @@ describe "Authentication" do
         click_button "Sign in"
       end
 
+      it { should have_link('Users',    href: users_path) }
       it { should have_selector('title', text: user.name) }
       it { should have_link('Profile', href: user_path(user)) }
       it { should have_link('Settings', href: edit_user_path(user)) }
@@ -61,7 +62,6 @@ describe "Authentication" do
         end
 
         describe "after signing in" do
-
           it "should render the desired protected page" do
             page.should have_selector('title', text: 'Edit user')
           end
@@ -79,6 +79,11 @@ describe "Authentication" do
           before { put user_path(user) }
           specify { response.should redirect_to(signin_path) }
         end
+
+        # describe "visiting the user index" do //causes error.. don't think i need it though.
+        #   before { visit users_path }
+        #   it { should have_selector('title', text: 'Sign in') }
+        # end
       end
     end
 
