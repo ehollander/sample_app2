@@ -1,0 +1,20 @@
+<% provide(:title, "Add Magazine") %>
+<h1>Add Magazine</h1>
+
+<div class="row">
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@magazine) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :division %>
+      <%= f.text_field :division %>
+
+      <%= f.submit "Create magazine", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

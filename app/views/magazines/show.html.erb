@@ -1,0 +1,14 @@
+<% provide(:title, 'All Magazines') %>
+<div> Logged in as: <%= current_user.name %></div>
+<h1>All Magazines</h1>
+
+
+<ul class="users">
+	<%#= link_to "Add User", signup_path %>
+  <% @magazines.each do |magazine| %>
+    <li>
+      	<%= link_to magazine.title, magazine %>
+      	| <%#= link_to "Edit", edit_user_path(user) %>
+    	| <%#= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" } %>
+    </li>
+</ul>
