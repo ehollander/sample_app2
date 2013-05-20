@@ -60,10 +60,11 @@ describe "User pages" do
   end
 
   describe "signup page" do
+    let(:user) { FactoryGirl.create(:user) }
     before { visit signup_path }
-
-    it { should have_selector('h1',    text: 'Sign up') }
-    it { should have_selector('title', text: full_title('Sign up')) }
+    #it  it { should have_selector('div',    text: 'Add User') }
+    it { should have_selector('h1',    text: 'Add User') }
+    it { should have_selector('title', text: full_title('Add User')) }
   end
 
   describe "signup" do
