@@ -1,18 +1,20 @@
 <% provide(:title, "Add Remittance Advice") %>
 <h1>Add Remittance</h1>
 
-<div class="row">
 
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@remittance) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :issue_id %>
-      <%= f.text_field :issue_id %>
+      <%= f.label :magazine_id %>
+      <%= f.collection_select :magazine_id, Magazine.order(:title), :id, :title, include_blank: true %>
 
-      <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
+      <%= f.label :issue_id %>
+      <%= f.grouped_collection_select :issue_id, Magazine.order(:title), :issues, :title, :id, :issue_number, include_blank: true %>
+
+      <%= f.label :user_id,"Agency"  %>
+      <%= f.collection_select(:user_id, User.all, :id, :name,  :prompt => true ) %>
 
       <%= f.label :notes %>
       <%= f.text_field :notes %>

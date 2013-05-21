@@ -16,7 +16,12 @@ class Issue < ActiveRecord::Base
   validates :issue_number, presence: true
   validates :magazine_id, presence: true
   has_many :remittances
-
   belongs_to :magazine
 
+
+  def select
+    @issue_id = Issue.where(:magazine_id => params[:magazine_id])
+    render :partial => "issue_partial", :object => @issues
+  end
+  
 end

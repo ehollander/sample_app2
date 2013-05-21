@@ -21,11 +21,14 @@ class RemittancesController < ApplicationController
 
   def index
     	@remittances = Remittance.all
+      #@remittances = Remittance.search(params[:search])
    end 	
 
   def show
 
   end
+
+  
 
   def edit
   		@remittance = Remittance.find(params[:id])

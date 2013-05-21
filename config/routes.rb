@@ -8,8 +8,6 @@ SampleApp2::Application.routes.draw do
   resources :issues
   resources :remittances
   
- 
-  
 
   root to: 'sessions#new'
 
