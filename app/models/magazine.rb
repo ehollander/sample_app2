@@ -14,4 +14,5 @@ class Magazine < ActiveRecord::Base
   validates :title, presence: true
 
   has_many :issues
+  has_many :remittances
 end

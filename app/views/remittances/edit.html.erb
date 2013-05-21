@@ -1,0 +1,21 @@
+<% provide(:title, "Edit remittance") %>
+<div> Logged in as: <%= current_user.name %></div> 
+
+<h1>Update remittance</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@remittance) do |f| %>
+    <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :remittance_number %>
+      <%= f.text_field :remittance_number %>
+
+      <%= f.label :cover_date %>
+      <%= f.text_field :cover_date %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

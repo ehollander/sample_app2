@@ -15,6 +15,7 @@ class Issue < ActiveRecord::Base
   attr_accessible :cover_date, :issue_number, :magazine_id, :on_sale_date
   validates :issue_number, presence: true
   validates :magazine_id, presence: true
+  has_many :remittances
 
   belongs_to :magazine
 

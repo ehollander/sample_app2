@@ -1,0 +1,12 @@
+<% provide(:title, 'All Remittances') %>
+<div> Logged in as: <%= current_user.name %></div>
+<h1>All remittances</h1>
+
+<ul class="users">
+	<%= link_to "Add Remittance", 'remittances/new' %>
+<% @remittances.each do |remittance| %> 
+<li><%= remittance.remittance_number %> | <%= remittance.cover_date.strftime("%b-%d-%Y") %> | <%= remittance.magazine.title %> 
+	| <%= link_to "Edit", edit_remittance_path(remittance) %>
+	| <%= link_to "Delete", remittance, method: :delete, data: { confirm: "You sure you want to delete this remittance?" } %>
+<% end %>
+</ul>
