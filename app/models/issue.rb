@@ -16,4 +16,6 @@ class Issue < ActiveRecord::Base
   validates :issue_number, presence: true
   validates :magazine_id, presence: true
 
+  belongs_to :magazine
+
 end

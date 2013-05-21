@@ -1,0 +1,12 @@
+<% provide(:title, 'All Issues') %>
+<div> Logged in as: <%= current_user.name %></div>
+<h1>All issues</h1>
+
+<ul class="users">
+	<%= link_to "Add Issue", 'issues/new' %>
+<% @issues.each do |issue| %> 
+<li><%= issue.issue_number %> | <%= issue.cover_date.strftime("%b-%d-%Y") %> | <%= issue.magazine.title %> 
+	| <%= link_to "Edit", edit_issue_path(issue) %>
+	| <%= link_to "Delete", issue, method: :delete, data: { confirm: "You sure you want to delete this issue?" } %>
+<% end %>
+</ul>

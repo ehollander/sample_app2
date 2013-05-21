@@ -1,0 +1,21 @@
+<% provide(:title, "Edit issue") %>
+<div> Logged in as: <%= current_user.name %></div> 
+
+<h1>Update issue</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@issue) do |f| %>
+    <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :issue_number %>
+      <%= f.text_field :issue_number %>
+
+      <%= f.label :cover_date %>
+      <%= f.text_field :cover_date %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

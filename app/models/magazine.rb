@@ -12,4 +12,6 @@
 class Magazine < ActiveRecord::Base
   attr_accessible :division, :title
   validates :title, presence: true
+
+  has_many :issues
 end
