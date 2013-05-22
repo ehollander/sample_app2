@@ -6,7 +6,7 @@ class Remittance < ActiveRecord::Base
 
   def self.search(search)
   if search
-    where('notes LIKE ?', "%#{search}%")
+    where('magazine_id LIKE ?', "%#{search}%")
   else
     scoped
   end
