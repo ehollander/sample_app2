@@ -2,7 +2,12 @@
 <div> Logged in as: <%= current_user.name %></div>
 <h1>All Remittances</h1>
 
-
+<%= form_tag remittances_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 
 
 <%= link_to "Add Remittance Advice", new_remittance_path, class: "btn btn-large btn-primary" %><p>
@@ -28,4 +33,6 @@
 </tr>	
 <% end %>
 </table>	
+
+<%= will_paginate @remittances %>
 

@@ -4,11 +4,11 @@ class Remittance < ActiveRecord::Base
   belongs_to :issue
   belongs_to :user
 
-  #  def self.search(search)
-  #   if search
-  #     where('name LIKE ?', "%#{search}%")
-  #   else
-  #     all
-  #   end
-  # end
+  def self.search(search)
+  if search
+    where('notes LIKE ?', "%#{search}%")
+  else
+    scoped
+  end
+end
 end
