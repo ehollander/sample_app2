@@ -4,11 +4,13 @@ class Remittance < ActiveRecord::Base
   belongs_to :issue
   belongs_to :user
 
-  def self.search(search)
-  if search
-    where('magazine_id LIKE ?', "%#{search}%")
-  else
-    scoped
-  end
-end
+  	def self.search(search)
+	  if search
+	    Remittance.where('magazine_id LIKE ?', "%#{search}%")
+
+	    #@permission = Permission.where(:user_id=>params[:user_id]).where(:project_id=>params[:project_id]).first
+	  else
+	    scoped
+	  end
+	end
 end

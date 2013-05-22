@@ -6,9 +6,10 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
   <p>
-    <%#= text_field_tag :search, params[:search] %>
-    <%#= collection_select :search, :magazine_id, Magazine.order(:title), :id, :title, include_blank: true %>
-    <%= select_tag "search", options_from_collection_for_select(Magazine.find(:all), :id, :title, params[:search]), :prompt => "Please select"%>
+  	Magazine
+    <%= select_tag "mag_id", options_from_collection_for_select(Magazine.find(:all), :id, :title, params[:mag_id]), :prompt => "Please select"%>
+    User ID
+    <%= text_field_tag :u_id, params[:u_id] %>
     <%#= select_tag "search", options_for_select([ "1", "2", "Closed" ], params[:search]) %>  
     <%= submit_tag "Search", :name => nil, class: "btn btn-large btn-primary"%>
     <%= link_to "Clear Search", remittances_path, class: "btn btn-large btn-primary" %><p>
