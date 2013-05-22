@@ -1,4 +1,11 @@
 class RemittancesController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
+  def index
+    @remittances = Remittance.order(sort_column + " " + sort_direction)
+  end   
+
   def new
   	@remittance = Remittance.new
   end
@@ -19,16 +26,9 @@ class RemittancesController < ApplicationController
     	redirect_to remittances_url
   end
 
-  def index
-    	@remittances = Remittance.all
-      #@remittances = Remittance.search(params[:search])
-   end 	
-
   def show
 
   end
-
-  
 
   def edit
   		@remittance = Remittance.find(params[:id])
@@ -43,4 +43,14 @@ class RemittancesController < ApplicationController
 	      render 'edit'
 	    end
 	end	
+
+  private
+
+  def sort_column
+    Remittance.column_names.include?(params[:sort]) ? params[:sort] : "user_id"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end
