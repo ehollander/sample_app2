@@ -3,7 +3,7 @@ class RemittancesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @remittances = Remittance.search(params[:mag_id], params[:u_id], params[:issue_num]).paginate(:per_page=>10, :page=> params[:page])
+    @remittances = Remittance.search(params[:mag_id], params[:u_id], params[:issue_num], params[:su_id]).paginate(:per_page=>5, :page=> params[:page])
   end   
 
   def new
