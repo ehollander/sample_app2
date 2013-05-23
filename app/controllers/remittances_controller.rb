@@ -3,28 +3,27 @@ class RemittancesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @remittances = Remittance.search(params[:mag_id],params[:u_id]).order(sort_column + " " + sort_direction).paginate(:per_page=>10, :page=> params[:page])
-    #remittances = Remittance.all.paginate(:per_page=>3, :page=> params[:page])
+    @remittances = Remittance.search(params[:mag_id], params[:u_id], params[:issue_num]).paginate(:per_page=>10, :page=> params[:page])
   end   
 
   def new
-  	@remittance = Remittance.new
+    @remittance = Remittance.new
   end
 
   def create
-  	@remittance = Remittance.new(params[:remittance])
-	    if @remittance.save
-	      flash[:success] = "New Remittance Created"	
-	      redirect_to remittances_url
-	    else
-	      render 'new'
-	    end
+    @remittance = Remittance.new(params[:remittance])
+      if @remittance.save
+        flash[:success] = "New Remittance Created"  
+        redirect_to remittances_url
+      else
+        render 'new'
+      end
   end
 
   def destroy
-  	Remittance.find(params[:id]).destroy
-    	flash[:success] = "Remittance destroyed."
-    	redirect_to remittances_url
+    Remittance.find(params[:id]).destroy
+      flash[:success] = "Remittance destroyed."
+      redirect_to remittances_url
   end
 
   def show
@@ -32,18 +31,18 @@ class RemittancesController < ApplicationController
   end
 
   def edit
-  		@remittance = Remittance.find(params[:id])
-  	end	
+      @remittance = Remittance.find(params[:id])
+    end 
 
   def update
-	    @remittance = Remittance.find(params[:id])
-	    if @remittance.update_attributes(params[:remittance])
-	      flash[:success] = "Remittance updated"
-	      redirect_to remittances_url
-	    else
-	      render 'edit'
-	    end
-	end	
+      @remittance = Remittance.find(params[:id])
+      if @remittance.update_attributes(params[:remittance])
+        flash[:success] = "Remittance updated"
+        redirect_to remittances_url
+      else
+        render 'edit'
+      end
+  end 
 
   private
 

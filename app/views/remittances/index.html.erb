@@ -1,16 +1,29 @@
 <% provide(:title, 'Remittance Advice Search') %>
 <div> Logged in as: <%= current_user.name %></div>
 <h1>Remittance Advice Portal</h1>
-
+<div class="span4 offset3">
 <%= form_tag remittances_path, :method => 'get' do %>
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
   <p>
   	Magazine
-    <%= select_tag "mag_id", options_from_collection_for_select(Magazine.find(:all), :id, :title, params[:mag_id]), :prompt => "Please select"%>
-    User ID
-    <%= text_field_tag :u_id, params[:u_id] %>
-    <%#= select_tag "search", options_for_select([ "1", "2", "Closed" ], params[:search]) %>  
+    <%= select_tag "mag_id", options_from_collection_for_select(Magazine.find(:all), 
+    					:id, :title, params[:mag_id]), :prompt => "Please select"%>
+    Issue Number
+    <%= text_field_tag :issue_num, params[:issue_num] %>
+
+
+    Agency
+    <%= select_tag "u_id", options_from_collection_for_select(User.find(:all), 
+    					:id, :name, params[:u_id]), :prompt => "Please select"%>
+    
+
+    <%#= select_tag "u_id", options_from_collection_for_select(User.find(:all), 
+    					:id, :name, params[:u_id]), :prompt => "Please select"%>  					    
+
+
+    <%#= text_field_tag :u_id, params[:u_id] %>
+   
     <%= submit_tag "Search", :name => nil, class: "btn btn-large btn-primary"%>
     <%= link_to "Clear Search", remittances_path, class: "btn btn-large btn-primary" %><p>
   </p>
@@ -18,7 +31,7 @@
 
 
 <%= link_to "Add Remittance Advice", new_remittance_path, class: "btn btn-large btn-primary" %><p>
-
+</div>
 <table class="table table-striped" >
 	<tr>
 		<th><%= sortable "user_id", "Agency" %></th> 

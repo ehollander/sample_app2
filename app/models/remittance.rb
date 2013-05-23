@@ -7,26 +7,24 @@ class Remittance < ActiveRecord::Base
   has_attached_file :myfile #, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
   					#:default_url => "/images/:style/missing.png"
 
-  	def self.search(mag, uid)
-	  if mag != ''
-	  	if uid != ''
- 		    Remittance.where('(magazine_id = ?) AND (user_id = ?)', "#{mag}", "#{uid}")
- 		else
- 		    Remittance.where('(magazine_id = ?)', "#{mag}")       
- 		end
- 	  else
-		    Remittance.where('(user_id = ?)', "#{uid}")       
- 	  end
-	    #@permission = Permission.where(:user_id=>params[:user_id]).where(:project_id=>params[:project_id]).first
-	  #else
-	  #  scoped
+
+  	def self.search(mag, uid, issue)
+
+
+	 # if ((mag != '') && (uid != '') && (issue != '')) 	# If mag, user, issue are used
+	 # 			Remittance.where('(magazine_id = ?) AND (user_id = ?) AND (issue_id = ?)', "#{mag}", "#{uid}", "#{issue}")
+	 # else  ((mag != '') && (uid != '') && (issue =='')) 	# If mag, user are used, issue is empty
+	 # 			Remittance.where('(magazine_id = ?) AND (user_id = ?)', "#{mag}", "#{uid}")
 	  #end
+
+
+  rem = Remittance.order(:id)
+  rem = rem.where("magazine_id = ?", "#{mag}") if mag.present?
+  rem = rem.where("user_id = ?", "#{uid}") if uid.present?
+  rem = rem.where("issue_id = ?", "#{issue}") if issue.present?
+  rem
+
 	end
-
-
-	
-
-
 end
 
 
