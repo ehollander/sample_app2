@@ -7,14 +7,20 @@ class Remittance < ActiveRecord::Base
   has_attached_file :myfile #, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
   					#:default_url => "/images/:style/missing.png"
 
-  	def self.search(search)
-	  if search
-	    Remittance.where('magazine_id LIKE ?', "%#{search}%")
-
+  	def self.search(mag, uid)
+	  if mag != ''
+	  	if uid != ''
+ 		    Remittance.where('(magazine_id = ?) AND (user_id = ?)', "#{mag}", "#{uid}")
+ 		else
+ 		    Remittance.where('(magazine_id = ?)', "#{mag}")       
+ 		end
+ 	  else
+		    Remittance.where('(user_id = ?)', "#{uid}")       
+ 	  end
 	    #@permission = Permission.where(:user_id=>params[:user_id]).where(:project_id=>params[:project_id]).first
-	  else
-	    scoped
-	  end
+	  #else
+	  #  scoped
+	  #end
 	end
 
 

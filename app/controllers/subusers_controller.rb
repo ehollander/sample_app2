@@ -1,13 +1,14 @@
 class SubusersController < ApplicationController
   def new
   	@subuser = Subuser.new
+    @user = User.find_by_id(params[:user_id])
   end
 
   def create
   	@subuser = Subuser.new(params[:subuser])
 	    if @subuser.save
 	      flash[:success] = "New Sub Agency Created"	
-	      redirect_to subusers_url
+	      redirect_to users_url
 	    else
 	      render 'new'
 	    end
