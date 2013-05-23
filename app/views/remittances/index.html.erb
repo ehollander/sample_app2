@@ -1,6 +1,6 @@
-<% provide(:title, 'All Remittances') %>
+<% provide(:title, 'Remittance Advice Search') %>
 <div> Logged in as: <%= current_user.name %></div>
-<h1>All Remittances</h1>
+<h1>Remittance Advice Portal</h1>
 
 <%= form_tag remittances_path, :method => 'get' do %>
 <%= hidden_field_tag :direction, params[:direction] %>
@@ -33,13 +33,14 @@
 <% for remittance in @remittances %>
 <tr>
 	<td><%= remittance.user.name %> </td>
+<!--	<td><%#= remittance.subuser.subname %> </td> -->
 	<td><%= remittance.issue.issue_number %></td>
 	<td><%= remittance.issue.cover_date.strftime("%b-%d-%Y") %> </td>
 	<td><%= remittance.magazine.title %> </td>
-	<td><%=  link_to "download", remittance.myfile.url, :target => "_blank"%> </td>
+	<td><%=  link_to "Download Advice", remittance.myfile.url, :target => "_blank"%> </td>
 	<td><%= link_to "Edit", edit_remittance_path(remittance) %></td>
 	<td><%= link_to "Delete", remittance, method: :delete, data: { confirm: "You sure you want to delete this remittance?" } %></td>
-</tr>,	
+</tr>	
 <% end %>
 </table>	
 

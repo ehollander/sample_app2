@@ -1,12 +1,23 @@
-<% provide(:title, 'All Magazines') %>
+<% provide(:title, 'Magazines') %>
 <div> Logged in as: <%= current_user.name %></div>
-<h1>All magazines</h1>
+<h1>Magazines</h1>
 
-<ul class="users">
-	<%= link_to "Add Magazine", 'magazines/new' %>
+<%= link_to "Add Magazine", new_magazine_path, class: "btn btn-large btn-primary" %><p>
+
+<table class="table table-striped" >
+	<tr>
+		<th>Magazine</th> 
+		<th>Division</th> 
+		<th>&nbsp</th>
+		<th>&nbsp</th>  
+	</tr>
+	
 <% @magazines.each do |magazine| %> 
-<li><%= magazine.title %> | <%= magazine.division %> 
-	| <%= link_to "Edit", edit_magazine_path(magazine) %>
-	| <%= link_to "Delete", magazine, method: :delete, data: { confirm: "You sure you want to delete this magazine?" } %>
+<tr>
+	<td><%= magazine.title %></td>
+	<td><%= magazine.division %></td>
+	<td><%= link_to "Edit", edit_magazine_path(magazine) %></td>
+	<td><%= link_to "Delete", magazine, method: :delete, data: { confirm: "You sure you want to delete this magazine?" } %></td>
+</tr>
 <% end %>
-</ul>
+</table>

@@ -1,12 +1,25 @@
-<% provide(:title, 'All Issues') %>
+<% provide(:title, 'Issues') %>
 <div> Logged in as: <%= current_user.name %></div>
-<h1>All issues</h1>
+<h1>Issues</h1>
 
-<ul class="users">
-	<%= link_to "Add Issue", 'issues/new' %>
+<%= link_to "Add Issue", new_issue_path, class: "btn btn-large btn-primary" %><p>
+
+<table class="table table-striped" >
+	<tr>
+		<th>Issue</th> 
+		<th>Cover Date</th> 
+		<th>Magazine</th> 
+		<th>&nbsp</th>
+		<th>&nbsp</th>  
+	</tr>
+	
 <% @issues.each do |issue| %> 
-<li><%= issue.issue_number %> | <%= issue.cover_date.strftime("%b-%d-%Y") %> | <%= issue.magazine.title %> 
-	| <%= link_to "Edit", edit_issue_path(issue) %>
-	| <%= link_to "Delete", issue, method: :delete, data: { confirm: "You sure you want to delete this issue?" } %>
+<tr>
+	<td><%= issue.issue_number %></td>
+	<td><%= issue.cover_date.strftime("%b-%d-%Y") %></td>
+	<td><%= issue.magazine.title %></td> 
+	<td><%= link_to "Edit", edit_issue_path(issue) %></td>
+	<td><%= link_to "Delete", issue, method: :delete, data: { confirm: "You sure you want to delete this issue?" } %></td>
+</tr>
 <% end %>
-</ul>
+</table>
