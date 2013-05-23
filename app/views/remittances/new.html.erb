@@ -19,6 +19,8 @@
       <%= f.label :notes %>
       <%= f.text_field :notes %>
 
+      <%= f.file_field :myfile %>
+
       <%= f.submit "Create Remittance Advice", class: "btn btn-large btn-primary" %>
     <% end %>
     <%= link_to "Cancel", remittances_path, class: "btn btn-large btn-primary" %>

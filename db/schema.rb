@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523004754) do
+ActiveRecord::Schema.define(:version => 20130523030206) do
 
   create_table "issues", :force => true do |t|
     t.integer  "issue_number"
@@ -34,9 +34,13 @@ ActiveRecord::Schema.define(:version => 20130523004754) do
     t.integer  "user_id"
     t.integer  "sub_user_id"
     t.string   "notes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "magazine_id"
+    t.string   "myfile_file_name"
+    t.string   "myfile_content_type"
+    t.integer  "myfile_file_size"
+    t.datetime "myfile_updated_at"
   end
 
   create_table "sub_agencies", :force => true do |t|
