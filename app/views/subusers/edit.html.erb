@@ -1,0 +1,18 @@
+<% provide(:title, "Edit Sub Agency") %>
+<div> Logged in as: <%= current_user.name %></div> 
+
+<h1>Update Sub Agency</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@subuser) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :subuser_number %>
+      <%= f.text_field :subuser_number %>
+
+       <%= f.submit "Edit Sub Agency", class: "btn btn-large btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<% provide(:title, "Add Sub Agency") %>
+<h1>Add Sub Agency</h1>
+
+<div class="row">
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@subuser) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :subname %>
+      <%= f.text_field :subname %>
+
+
+      <%= f.submit "Create Sub Agency", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

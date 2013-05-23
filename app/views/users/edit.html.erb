@@ -21,5 +21,11 @@
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
+ 
+
+    <%= form_tag '../../new_subuser_path' do %>
+        <%= hidden_field_tag :user_id,  @user.id %>
+        <%= submit_tag "Add Sub Agency", :name => nil, class: "btn btn-large btn-primary"%>
+    <% end %>
   </div>
 </div>

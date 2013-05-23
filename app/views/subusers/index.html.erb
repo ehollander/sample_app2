@@ -1,0 +1,12 @@
+<% provide(:title, 'All Sub Agency') %>
+<div> Logged in as: <%= current_user.name %></div>
+<h1>All Sub Agencies</h1>
+
+<ul class="users">
+	<%= link_to "Add Subuser", 'subusers/new' %>
+<% @subusers.each do |subuser| %> 
+<li><%= subuser.subuser_number %> | <%= subuser.cover_date.strftime("%b-%d-%Y") %> | <%= subuser.magazine.title %> 
+	| <%= link_to "Edit", edit_subuser_path(subuser) %>
+	| <%= link_to "Delete", subuser, method: :delete, data: { confirm: "You sure you want to delete this subuser?" } %>
+<% end %>
+</ul>

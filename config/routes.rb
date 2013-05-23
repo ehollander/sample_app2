@@ -7,6 +7,7 @@ SampleApp2::Application.routes.draw do
   resources :magazines #, only: [:new, :create, :destroy]
   resources :issues
   resources :remittances
+  resources :subusers
   
 
   root to: 'sessions#new'
