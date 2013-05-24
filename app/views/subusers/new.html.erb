@@ -5,17 +5,11 @@
   <div class="span6 offset3">
     <%= form_for(@subuser) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-     <%#= 	:url =>edit_user_path(params[:user_id] %>
 
       <%= f.label :subname %>
       <%= f.text_field :subname %>
-      <%  x = params[:user_id] %>
-
-      <%#= f.label :user_id %>
-      <%#=  user.name.(params[:user_id]) %>
-      <%#=  subuser.user.name.(params[:user_id]) %>
-      <%= hidden_field_tag :user_id, params[:user_id] %>
-
+   
+      <%= f.hidden_field :user_id, :value => params[:user_id] %>
 
       <%= f.submit "Create Sub Agency", class: "btn btn-large btn-primary" %>
     <% end %>

@@ -45,7 +45,7 @@
 <% for remittance in @remittances %>
 <tr>
 	<td><%= remittance.user.name %> </td>
-	<td><%= remittance.subuser('1') %> </td>
+	<td><%= remittance.subuser %> </td>
 	<td><%= remittance.issue.issue_number %></td>
 	<td><%= remittance.issue.cover_date.strftime("%b-%d-%Y") %> </td>
 	<td><%= remittance.magazine.title %> </td>

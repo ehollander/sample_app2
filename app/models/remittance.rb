@@ -14,7 +14,7 @@ class Remittance < ActiveRecord::Base
 	  rem = rem.where("magazine_id = ?", "#{mag}") if mag.present?
 	  rem = rem.where("user_id = ?", "#{uid}") if uid.present?
 	  rem = rem.where("issue_id = ?", "#{issue}") if issue.present?
-	  rem = rem.where("sub_user_id = ?", "#{suid}") if suid.present?
+	  rem = rem.where("subuser_id = ?", "#{suid}") if suid.present?
 	  rem
 	end
 end

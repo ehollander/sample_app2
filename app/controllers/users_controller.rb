@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :signed_in_user , only: [:edit, :update]
-	#before_filter :correct_user,   only: [:edit, :update]
+	#before_filter :correct_user,   only: [:edit, :update] =>was used to prevent authenticated user from viewing other authenticated users.  Turned off so admin users can edit other users.
 
 	def show
   		@user = User.find(params[:id])
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 	    @user = User.find(params[:id])
 	    if @user.update_attributes(params[:user])
 	      flash[:success] = "Profile updated"
-	      #sign_in @user
+	      #sign_in @user # disabled so admin user can update other users
 	      redirect_to @user
 	    else
 	      render 'edit'
