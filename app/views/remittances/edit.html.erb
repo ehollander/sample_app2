@@ -17,8 +17,8 @@
       <%= f.label :user_id,"Agency"  %>
       <%= f.collection_select(:user_id, User.all, :id, :name,  :prompt => true ) %>
 
-      <%= f.label :subuser_id,"Sub Agency"  %>
-      <%= f.collection_select(:subuser_id, Subuser.all, :id, :subname,  :prompt => true ) %>
+      <%= f.label :sub_user_id,"Sub Agency"  %>
+      <%= f.collection_select(:sub_user_id, Subuser.all, :id, :subname,  :prompt => true ) %>
 
       <%= f.label :notes %>
       <%= f.text_field :notes %>
